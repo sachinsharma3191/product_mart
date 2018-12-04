@@ -5,6 +5,10 @@ require_once "header.php";
 ?>
 <!doctype html>
 <html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="products/load_products.js"></script>
+</head>
 <title>Category</title>
 	<!--================Header Menu Area =================-->
 
@@ -83,7 +87,7 @@ require_once "header.php";
 					$password = "";
 					$database = "productmart";
 					$connect = mysqli_connect($servername, $username, $password,$database);
-                 	$query = "SELECT * FROM products";
+                 	$query = "SELECT * FROM products ";
 					$result = mysqli_query($connect, $query);
 					if((mysqli_num_rows($result) == 0))
 					echo "no products found";
@@ -100,10 +104,10 @@ require_once "header.php";
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
 										</a>
-										<?php $val1 = $row["ProductID"];?>
-										<button name="addToCart" class="addToCart btn" type="button" id="addToCart" value = "<?php echo $val1; ?>">
+										<button name="addToCart" type="button" id="addToCart" class="addToCart btn" value="<?php echo $row["ProductID"];?>">
 											<i class="lnr lnr-cart"></i>
 										</button>
+				
 									</div>
 								</div>
 									    <a href="#">
