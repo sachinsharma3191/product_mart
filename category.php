@@ -83,11 +83,11 @@ require_once "header.php";
 					<div class="latest_product_inner row">
 					<?php
 					$servername = "localhost";
-					$username = "root";
-					$password = "";
+					$username = "adminhema";
+					$password = "password123";
 					$database = "productmart";
 					$connect = mysqli_connect($servername, $username, $password,$database);
-                 	$query = "SELECT * FROM products ";
+                 			$query = "SELECT * FROM products ";
 					$result = mysqli_query($connect, $query);
 					if((mysqli_num_rows($result) == 0))
 					echo "no products found";
