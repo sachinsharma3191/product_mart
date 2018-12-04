@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let addToCartButtonCounter= 0;
+    
     //Handle Function for Add To Cart Functionality
     $('body').on("click", "button[name=addToCart]", function (){
         addToCartButtonCounter++;
@@ -31,9 +32,8 @@ $(document).ready(function() {
             method:"POST",
             data: data,
             success: (data) => {
-                console.log(data);
                 if(data.includes("Item Added To Cart")){
-                    alert("Item Added To Cart");
+                    alert("Item " + detailedProduct.ProductID + " " + detailedProduct.ProductName + " is Added To Cart");
                 }
                 else {
                     alert("Error occured");
