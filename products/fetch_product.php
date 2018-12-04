@@ -19,9 +19,10 @@ else {
 }
 
 $output = array();
-$productsQuery = "select * from products";
+$productId = $_POST["productId"];
+$fetchProducyQuery = "select * from products where ProductID = '$productId'";
 
-$productResults =  $conn->query($productsQuery);
+$productResults =  $conn->query($fetchProducyQuery);
 if($productResults->num_rows > 0){
     while ($row = $productResults->fetch_assoc()) {
         $output[] = $row;
@@ -29,7 +30,8 @@ if($productResults->num_rows > 0){
     echo json_encode($output);
 }
 else {
-    echo "No Products to Load";
+    echo "No Product Found";
 }
+
 ?>
 

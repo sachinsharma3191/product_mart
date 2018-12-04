@@ -71,6 +71,7 @@ $(document).ready(function() {
             method:"POST",
             data: data,
             success: (data) => {
+                console.log(data);
                 if(data.includes("Item Added To Cart")){
                     alert("Item Added To Cart");
                 }
