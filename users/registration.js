@@ -47,6 +47,7 @@ $(document).ready(function() {
                    method:"POST",
                    data: data,
                    success: (data) => {
+                        console.log(data);
                        if(data.includes("User Already Exists")){
                            alert("User Already Exists");
                        }
@@ -58,7 +59,6 @@ $(document).ready(function() {
                           alert("Error");
                        }
                      }
-                   }
                });
                clearFields();
            }
