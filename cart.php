@@ -1,6 +1,9 @@
 <?php
 $TITLE="Cart";
 require_once "header.php";
+include "storescripts/connect_to_mysql.php";
+?>
+<?php
 
 ?>
 <!doctype html>
@@ -32,109 +35,45 @@ require_once "header.php";
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">Product</th>
+								<th scope="col">Product Name</th>
 								<th scope="col">Price</th>
 								<th scope="col">Quantity</th>
 								<th scope="col">Total</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<?php
+								$sql =
+							  "
+							  SELECT * FROM productmart.cart, productmart.products
+								where cart.ProductID = products.ProductID
+							  and 1=1
+							  ";
+							$result = mysqli_query($con, $sql);
+							if (mysqli_num_rows($result) > 0) {
+									// output data of each row
+									while($row = mysqli_fetch_assoc($result)) {
+									        $imagefile=$row["ProductImage"];
+													$cartTotal = $row["Price"]*$row["quantity"] + $cartTotal;
+										echo "
+										<tr>
+										<td> <div class='media'>
+											<div class='d-flex'>
+												<img src='/productimages/$imagefile'" . $row["ProductImage"] . "alt=''>
+											</div>" . $row["ProductName"] . "</td>
+										<td>" . $row["Price"] . "</td>
+										<td>" . $row["quantity"] . "</td>
+										<td>" . $row["Price"]*$row["quantity"] . "</td>
+										</tr>";
+									}
+									}
+									else {
+										echo "error";
+									}
+
+							echo "<tr class='bottom_button'>
 								<td>
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/single-product/cart-1.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<p>Minimalistic shop for multipurpose use</p>
-										</div>
-									</div>
-								</td>
-								<td>
-									<h5>$360.00</h5>
-								</td>
-								<td>
-									<div class="product_count">
-										<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-										 class="increase items-count" type="button">
-											<i class="lnr lnr-chevron-up"></i>
-										</button>
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-										 class="reduced items-count" type="button">
-											<i class="lnr lnr-chevron-down"></i>
-										</button>
-									</div>
-								</td>
-								<td>
-									<h5>$720.00</h5>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/single-product/cart-1.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<p>Minimalistic shop for multipurpose use</p>
-										</div>
-									</div>
-								</td>
-								<td>
-									<h5>$360.00</h5>
-								</td>
-								<td>
-									<div class="product_count">
-										<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-										 class="increase items-count" type="button">
-											<i class="lnr lnr-chevron-up"></i>
-										</button>
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-										 class="reduced items-count" type="button">
-											<i class="lnr lnr-chevron-down"></i>
-										</button>
-									</div>
-								</td>
-								<td>
-									<h5>$720.00</h5>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/single-product/cart-1.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<p>Minimalistic shop for multipurpose use</p>
-										</div>
-									</div>
-								</td>
-								<td>
-									<h5>$360.00</h5>
-								</td>
-								<td>
-									<div class="product_count">
-										<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-										 class="increase items-count" type="button">
-											<i class="lnr lnr-chevron-up"></i>
-										</button>
-										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-										 class="reduced items-count" type="button">
-											<i class="lnr lnr-chevron-down"></i>
-										</button>
-									</div>
-								</td>
-								<td>
-									<h5>$720.00</h5>
-								</td>
-							</tr>
-							<tr class="bottom_button">
-								<td>
-									<a class="gray_btn" href="#">Update Cart</a>
+									<a class='gray_btn' href='#'>Update Cart</a>
 								</td>
 								<td>
 
@@ -143,10 +82,10 @@ require_once "header.php";
 
 								</td>
 								<td>
-									<div class="cupon_text">
-										<input type="text" placeholder="Coupon Code">
-										<a class="main_btn" href="#">Apply</a>
-										<a class="gray_btn" href="#">Close Coupon</a>
+									<div class='cupon_text'>
+										<input type='text' placeholder='Coupon Code'>
+										<a class='main_btn' href='#'>Apply</a>
+										<a class='gray_btn' href='#'>Close Coupon</a>
 									</div>
 								</td>
 							</tr>
@@ -161,9 +100,13 @@ require_once "header.php";
 									<h5>Subtotal</h5>
 								</td>
 								<td>
-									<h5>$2160.00</h5>
-								</td>
-							</tr>
+									<div class='cupon_text'>
+									<h5 class='carttotal'>" . $cartTotal . "
+									</h5>
+									</div>
+									</td>
+							</tr>"
+							?>
 							<tr class="shipping_area">
 								<td>
 
@@ -219,9 +162,43 @@ require_once "header.php";
 
 								</td>
 								<td>
+
+								</td>
+								<td>
+
+								</td>
+								<td>
+
+								</td>
+								<td>
 									<div class="checkout_btn_inner">
 										<a class="gray_btn" href="#">Continue Shopping</a>
-										<a class="main_btn" href="#">Proceed to checkout</a>
+										<!--a class="main_btn" method="post" href="http://www.usproductmart.com/storescripts/my_ipn.php" >Proceed to checkout</a-->
+										<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+						          <!-- Identify your business so that you can collect the payments. -->
+						          <input type="hidden" name="business" value="subroto.bisiness@edeves.com">
+
+						          <!-- Specify a Buy Now button. -->
+						          <input type="hidden" name="cmd" value="_xclick">
+
+						          <!-- Specify details about the item that buyers will purchase. -->
+						          <input type="hidden" name="item_name" value="Hot Sauce-12oz. Bottle">
+						          <input type="hidden" name="amount" value="100">
+						          <input type="hidden" name="currency_code" value="USD">
+						          <input type="hidden" name="return" value="http://www.edeves.com/paypal/thank-you.php">
+						          <input type="hidden" name="cancel_return" value="http://edeves.com/paypal/cancle.php">
+						          <input type="hidden" name="notify_url" value="http://www.edeves.com/paypal/update-record.php">
+
+						          <!-- Display the payment button. -->
+
+						          <input class="main_btn" type="image" name="submit" border="0"
+						          src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_buynow_107x26.png"
+						          alt="Buy Now">
+						          <img alt="" border="0" width="1" height="1"
+						          src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+						        </form>
 									</div>
 								</td>
 							</tr>
