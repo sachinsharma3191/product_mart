@@ -28,7 +28,7 @@ $(document).ready(function() {
             product: JSON.stringify(detailedProduct)
         }
         $.ajax({
-            url: "cart/add_to_cart.php",
+            url: "cart.php",
             method:"POST",
             data: data,
             success: (data) => {
