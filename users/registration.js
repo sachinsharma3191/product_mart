@@ -50,10 +50,14 @@ $(document).ready(function() {
                        if(data.includes("User Already Exists")){
                            alert("User Already Exists");
                        }
-                       if(data.includes("New record ")){
+                       else if(data.includes("New record")){
                           alert("User Registration Successful");
                           window.location = "http://usproductmart.com/login.php";
                        }
+                       else if(data.includes("Error")){
+                          alert("Error");
+                       }
+                     }
                    }
                });
                clearFields();
