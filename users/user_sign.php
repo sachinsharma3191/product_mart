@@ -25,9 +25,7 @@ $user_details = $conn->query($loginQuery);
 
 if($user_details->num_rows > 0){
     while ($row = $user_details->fetch_assoc()) {
-            $cookie_name = "username";
-            $cookie_value =  $row["email"];
-            setcookie($cookie_name, $cookie_value, time() + (60), "/product_mart"); // 86400 = 1 day
+            $_SESSION["userid"] = $row["Email"];
     }
     echo "Successful";
 }
