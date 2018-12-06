@@ -64,6 +64,7 @@ include "storescripts/connect_to_mysql.php";
 										<td>" . $row["Price"] . "</td>
 										<td>" . $row["quantity"] . "</td>
 										<td>" . $row["Price"]*$row["quantity"] . "</td>
+										<td><form name='frmDelete' action='deleteCart.php' method='post'><input type='hidden' name='CartID' value=" . $row["CartID"] . "><input type='submit' name='dlteBtn' value='Delete'></form></td>
 										</tr>";
 									}
 									}
