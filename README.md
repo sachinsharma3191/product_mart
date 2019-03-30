@@ -1,6 +1,6 @@
 # Product Mart
 
-##### Product Mart is E-Commerce Aapplication where user can search, view, login and buy product.This application has been developed using WAMP stack(MAMP on Mac and LAMP on Linux).This project is part of CMPE-272 Enterprise Software Platforms 
+##### Product Mart is E-Commerce Application where user can search, view, login and buy product.This application has been developed using WAMP stack(MAMP on Mac and LAMP on Linux).This project is part of CMPE-272 Enterprise Software Platforms 
 
 #### To Run this project,WAMP needs to be installed on machine
 
