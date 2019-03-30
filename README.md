@@ -4,18 +4,18 @@
 
 #### To Run this project,WAMP needs to be installed on machine
 
-## WAMP Setup on Windows
-### To Click [WAMP](https://sourceforge.net/projects/wampserver/files/WampServer%203/WampServer%203.0.0/wampserver3.1.7_x64.exe/download)
+### WAMP Setup on Windows
+#### To Click [WAMP](https://sourceforge.net/projects/wampserver/files/WampServer%203/WampServer%203.0.0/wampserver3.1.7_x64.exe/download)
 
 #### For Mac Users,Download [MAMP](https://www.mamp.info/en/downloads/)
 
-## Git Setup
+### Git Setup
 #### On Mac , go to terminal and run following command 
 ##### brew install git 
 
 #### For Windows Users, Download from here [Git](https://git-scm.com/download/win)
 
-# Project SetUp
+### Project SetUp
 #### Clone the Projct using git.Copy the extracted folder to www folder inside MAMP( WAMP on Windows) folder location
 #### Start the MAMP (WAMP) server.
-###  On Mac,go to [localhost:8888/product_mart/home.html](https://localhost:8888/product_mart/home.html). On windows, go to [localhost:8080/product_mart/home.html](https://localhost:8080/product_mart/home.html) to view the homepage
+####  On Mac,go to [localhost:8888/product_mart/home.html](https://localhost:8888/product_mart/home.html). On windows, go to [localhost:8080/product_mart/home.html](https://localhost:8080/product_mart/home.html) to view the homepage
